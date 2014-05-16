@@ -1,0 +1,29 @@
+{
+  "name": "node-luvit-deps",
+  "version": "0.0.0",
+  "description": "Return the dependency graph of a lua/luvit module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Robert Chiniquy",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "luaparse": "^0.1.6",
+    "tape": "^2.12.3",
+    "resolve": "^0.6.3",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:robert-chiniquy/node-luvit-deps.git"
+  },
+  "keywords": [
+    "luvit"
+  ],
+  "bugs": {
+    "url": "https://github.com/robert-chiniquy/node-luvit-deps/issues"
+  },
+  "homepage": "https://github.com/robert-chiniquy/node-luvit-deps"
+}
