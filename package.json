@@ -1,6 +1,6 @@
 {
   "name": "luvit-deps",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Returns the dependency graph of a lua/luvit module",
   "main": "index.js",
   "scripts": {
@@ -14,15 +14,15 @@
     "underscore": "^1.6.0"
   },
   "devDependencies": {
-        "tape": "^2.12.3"
-    },
+    "tape": "^2.12.3"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:robert-chiniquy/node-luvit-deps.git"
   },
   "bin": {
     "luvit-deps": "./cli.js"
-    },
+  },
   "keywords": [
     "luvit"
   ],
