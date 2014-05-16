@@ -1,7 +1,7 @@
 {
-  "name": "node-luvit-deps",
+  "name": "luvit-deps",
   "version": "0.0.0",
-  "description": "Return the dependency graph of a lua/luvit module",
+  "description": "Returns the dependency graph of a lua/luvit module",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
@@ -10,15 +10,19 @@
   "license": "Apache 2.0",
   "dependencies": {
     "luaparse": "^0.1.6",
-    "tape": "^2.12.3",
     "resolve": "^0.6.3",
     "underscore": "^1.6.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+        "tape": "^2.12.3"
+    },
   "repository": {
     "type": "git",
     "url": "git@github.com:robert-chiniquy/node-luvit-deps.git"
   },
+  "bin": {
+    "luvit-deps": "./cli.js"
+    },
   "keywords": [
     "luvit"
   ],
