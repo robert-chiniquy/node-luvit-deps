@@ -1,6 +1,6 @@
 {
   "name": "luvit-deps",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Returns the dependency graph of a lua/luvit module",
   "main": "index.js",
   "scripts": {
