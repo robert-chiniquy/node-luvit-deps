@@ -9,14 +9,18 @@ var exports = module.exports = function deps(filename) {
   var
     required_files = [].concat(filename),
     result = {},
-    seen = [],
+    seen = require('./core'),
     name;
   do {
     name = required_files.pop();
     if (name && -1 == seen.indexOf(name)) {
       seen.push(name);
-      result[name] = detective(fs.readFileSync(name, 'utf-8'));
-      required_files = required_files.concat(result[name].map(function(n) { return resolve_require(n, name); }));
+      try {
+        result[name] = detective(fs.readFileSync(name, 'utf-8'));
+        required_files = required_files.concat(result[name].map(function(n) { return resolve_require(n, name); }));
+      } catch (e) {
+        process.stderr.write('Unable to read ' + name + '\n');
+      }
     }
   } while (required_files.length > 0);
   return result;
@@ -48,6 +52,7 @@ function detective(src) {
 
 function walk(src) {
   var ast = parser.parse(src);
+//  process.stdout.write(JSON.stringify(ast, 0, 2) + '\n');
   return traverse(ast);
 }
 
