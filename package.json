@@ -10,8 +10,9 @@
   "license": "Apache 2.0",
   "dependencies": {
     "luaparse": "^0.1.6",
-    "resolve": "^0.6.3",
-    "underscore": "^1.6.0"
+    "resolve": "^0.7.0",
+    "underscore": "^1.6.0",
+    "minimist": "^0.1.0"
   },
   "devDependencies": {
     "tape": "^2.12.3"

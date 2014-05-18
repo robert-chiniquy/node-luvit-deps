@@ -13,7 +13,6 @@
   "mime",
   "module",
   "net",
-  "os",
   "path",
   "querystring",
   "repl",
@@ -23,5 +22,6 @@
   "url",
   "utils",
   "uv",
+  "uv_native",
   "zlib"
 ]

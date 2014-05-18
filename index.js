@@ -7,28 +7,37 @@ var resolve = require('resolve').sync;
 // take a filename, return a map of filename - > filenames resolved from require() calls within each file
 var exports = module.exports = function deps(filename) {
   var
-    required_files = [].concat(filename),
+    to_search = [].concat(filename),
+    skip = require('./core'), 
     result = {},
-    seen = require('./core'),
     name;
+
   do {
-    name = required_files.pop();
-    if (name && -1 == seen.indexOf(name)) {
-      seen.push(name);
+    name = to_search.pop();
+    if (name && -1 == skip.indexOf(name)) {
+      skip.push(name);
       try {
         result[name] = detective(fs.readFileSync(name, 'utf-8'));
-        required_files = required_files.concat(result[name].map(function(n) { return resolve_require(n, name); }));
+
+        to_search = to_search.concat(result[name].
+          filter(function s(n) { return skip.indexOf(n) == -1}).
+          map(function r(n) { return resolve_require(n, name); })
+        );
       } catch (e) {
         process.stderr.write('Unable to read ' + name + '\n');
       }
     }
-  } while (required_files.length > 0);
+  } while (to_search.length > 0);
   return result;
 }
 
 function resolve_require(module, from) {
   try {
-    var ab = resolve(module, { basedir: path.resolve(path.dirname(from)), extensions: ['.lua', '.luvit'], moduleDirectory: 'modules' });
+    var ab = resolve(module, { 
+      basedir: path.resolve(path.dirname(from)),
+      extensions: ['.lua', '.luvit'],
+      moduleDirectory: ['modules', 'lua_modules', 'node_modules']
+    });
     if (ab[0] === path.sep)
       return './' + path.relative(process.cwd(), ab);
     return ab;

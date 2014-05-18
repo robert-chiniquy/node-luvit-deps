@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 var test = require('tape');
 
 var deps = require('./');
