@@ -13,6 +13,7 @@
   "mime",
   "module",
   "net",
+  "os",
   "path",
   "querystring",
   "repl",
