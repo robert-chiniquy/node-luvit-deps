@@ -17,11 +17,11 @@ var exports = module.exports = function deps(filename) {
     if (name && -1 == skip.indexOf(name)) {
       skip.push(name);
       try {
-        result[name] = detective(fs.readFileSync(name, 'utf-8'));
+        result[name] = detective(fs.readFileSync(name, 'utf-8')).sort();
 
-        to_search = to_search.concat(result[name].
-          filter(function s(n) { return skip.indexOf(n) == -1}).
-          map(function r(n) { return resolve_require(n, name); })
+        to_search = to_search.concat(result[name]
+          .filter(function s(n) { return skip.indexOf(n) == -1})
+          .map(function r(n) { return resolve_require(n, name); })
         );
       } catch (e) {
         process.stderr.write('Unable to read ' + name + '\n');
