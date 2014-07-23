@@ -1,7 +1,8 @@
 node-luvit-deps
 ===============
 
-Returns the dependency graph of a lua/luvit module
+Returns the dependency graph of a lua/luvit module. 
+Only works on top-level `require()` calls.
 
 install
 =======
